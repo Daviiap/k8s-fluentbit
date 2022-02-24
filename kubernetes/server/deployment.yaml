@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-server
+spec:
+  selector:
+    matchLabels:
+      app: example-server
+  template:
+    metadata:
+      labels:
+        app: example-server
+    spec:
+      containers:
+      - name: example-server
+        image: example-server
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "0.5"
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Never
